@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OmniSentinel | 墨观天下</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;500;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: {
+                black: '#1a1a1a',
+                dark: '#2d2d2d',
+                base: '#4a4a4a',
+                light: '#888888',
+                faint: '#cccccc',
+                wash: '#f2f2f2',
+              },
+              paper: {
+                DEFAULT: '#f7f5f0',
+                dark: '#e8e6e1',
+                accent: '#dcd9d1',
+              },
+              seal: {
+                DEFAULT: '#b91c1c', // Chinese Red
+                light: '#ef4444',
+              },
+              nature: {
+                bamboo: '#5c7a63',
+                ochre: '#b48a60',
+                indigo: '#435a6b'
+              }
+            },
+            fontFamily: {
+              serif: ['"Noto Serif SC"', 'serif'],
+              calligraphy: ['"Ma Shan Zheng"', 'cursive'],
+            },
+            backgroundImage: {
+              'rice-paper': "url('https://www.transparenttextures.com/patterns/rice-paper-2.png')",
+              'ink-splatter': "radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 70%)"
+            },
+            animation: {
+              'ink-spread': 'inkSpread 2s ease-out forwards',
+              'fade-in-up': 'fadeInUp 1s ease-out forwards',
+              'float': 'float 6s ease-in-out infinite',
+              'brush-write': 'brushWrite 1s ease-out forwards',
+            },
+            keyframes: {
+              inkSpread: {
+                '0%': { opacity: '0', transform: 'scale(0.8) filter(blur(10px))' },
+                '100%': { opacity: '1', transform: 'scale(1) filter(blur(0))' },
+              },
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              brushWrite: {
+                '0%': { clipPath: 'inset(0 100% 0 0)' },
+                '100%': { clipPath: 'inset(0 0 0 0)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #f7f5f0;
+        color: #1a1a1a;
+        font-family: 'Noto Serif SC', serif;
+        background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+      }
+      
+      /* Vertical Text Utility */
+      .vertical-text {
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+      }
+      
+      /* Ink Stroke Border */
+      .ink-border-bottom {
+        position: relative;
+      }
+      .ink-border-bottom::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: url("data:image/svg+xml,%3Csvg width='100' height='4' viewBox='0 0 100 4' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 2 Q 50 4 100 1' stroke='%231a1a1a' stroke-width='2' fill='none' stroke-linecap='round' /%3E%3C/svg%3E");
+        background-size: 100% 100%;
+        opacity: 0.8;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #888; 
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      .custom-ink-shadow {
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
